@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YY老大的个人主页 | 绘画技术与生活分享</title>
     <style>
-        /* 全局样式重置 */
         * {
             margin: 0;
             padding: 0;
@@ -13,21 +12,20 @@
         }
 
         body {
-            font-family: "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #f4f7f9;
+            font-family: "Microsoft YaHei", sans-serif;
+            background-color: #f8f9fa;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* 导航栏 */
         nav {
             background-color: #2c3e50;
             color: white;
-            padding: 15px 0;
+            padding: 16px 0;
             position: sticky;
             top: 0;
-            z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 99;
         }
         .nav-container {
             max-width: 1000px;
@@ -44,156 +42,158 @@
         .nav-links a {
             color: white;
             text-decoration: none;
-            margin-left: 25px;
-            transition: color 0.3s;
+            margin-left: 24px;
+            transition: 0.3s;
         }
         .nav-links a:hover {
-            color: #3498db;
+            color: #4fc3f7;
         }
 
-        /* 头部Hero区域 */
         header {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
+            background: linear-gradient(135deg, #3b5998, #4fc3f7);
             color: white;
-            padding: 80px 20px;
+            padding: 90px 20px;
             text-align: center;
         }
+        /* 新增头像样式 */
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
         .hero-title {
-            font-size: 36px;
-            margin-bottom: 15px;
+            font-size: 40px;
+            margin-bottom: 18px;
         }
         .hero-subtitle {
-            font-size: 18px;
-            opacity: 0.9;
-            max-width: 600px;
+            font-size: 19px;
+            max-width: 650px;
             margin: 0 auto;
+            opacity: 0.95;
         }
 
-        /* 主体容器 */
         .container {
             max-width: 1000px;
-            margin: 50px auto;
+            margin: 60px auto;
             padding: 0 20px;
         }
 
-        /* 卡片样式 */
         .card {
-            background-color: white;
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-            transition: transform 0.3s;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.05);
+            margin-bottom: 35px;
+            transition: 0.3s;
         }
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
         }
         .card h2 {
             color: #2c3e50;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             display: flex;
             align-items: center;
+            font-size: 24px;
         }
         .card h2::before {
             content: "";
-            display: inline-block;
-            width: 5px;
-            height: 25px;
-            background-color: #3498db;
-            margin-right: 15px;
+            width: 6px;
+            height: 28px;
+            background-color: #4fc3f7;
+            margin-right: 14px;
+            border-radius: 4px;
         }
 
-        /* 技能/爱好列表 */
         .grid-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
             margin-top: 20px;
         }
         .grid-item {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
+            background: #f1f5f9;
+            padding: 18px;
+            border-radius: 10px;
             text-align: center;
-            transition: all 0.3s;
+            font-weight: 500;
+            transition: 0.3s;
         }
         .grid-item:hover {
-            background-color: #e3f2fd;
-            color: #2980b9;
+            background: #e0f7fa;
+            color: #0288d1;
         }
 
-        /* 页脚 */
         footer {
             background-color: #2c3e50;
             color: white;
             text-align: center;
-            padding: 30px;
-            margin-top: 50px;
+            padding: 35px 20px;
+            margin-top: 60px;
         }
 
-        /* 响应式适配 */
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 28px;
-            }
-            .nav-links {
-                display: none;
-            }
+            .hero-title { font-size: 32px; }
+            .nav-links { display: none; }
+            .card { padding: 30px 25px; }
+            .avatar { width: 120px; height: 120px; }
         }
     </style>
 </head>
+
 <body>
-    <!-- 导航栏 -->
     <nav>
         <div class="nav-container">
             <div class="nav-logo">YY老大的主页</div>
             <div class="nav-links">
                 <a href="#about">关于我</a>
                 <a href="#skills">技能爱好</a>
-                <a href="#contact">联系方式</a>
+                <a href="#contact">联系我</a>
             </div>
         </div>
     </nav>
 
-    <!-- 头部Hero区域 -->
     <header>
+        <!-- 头像位置，引用你上传的图片 -->
+        <img src="avatar.jpg" alt="YY老大的头像" class="avatar">
         <h1 class="hero-title">你好，我是YY老大 👋</h1>
-        <p class="hero-subtitle">专注于图纸绘画，在这里分享我的工作与生活</p>
+        <p class="hero-subtitle">专注于土木建筑图纸绘画，用心做好每一张施工图，在这里分享我的工作与生活</p>
     </header>
 
-    <!-- 主体内容 -->
     <div class="container">
-        <!-- 关于我 -->
         <div class="card" id="about">
             <h2>关于我</h2>
-            <p>我是一名在土木建筑行业的技术人员，主要负责工程前期的图纸绘画和施工图。</p>
-            <p style="margin-top: 15px;">工作之余，我喜欢绘画和制作美食，也会玩游戏放松自己。希望通过这个网站记录我的成长与分享。</p>
+            <p>我是一名土木建筑行业的技术人员，主要负责工程前期图纸绘画与施工图绘制，认真对待每一个项目细节。</p>
+            <p style="margin-top:16px;">工作之余，我喜欢绘画、制作美食、养花种草、探店打卡，偶尔也会玩游戏放松自己。希望通过这个网站记录生活、分享热爱。</p>
         </div>
 
-        <!-- 技能与爱好 -->
         <div class="card" id="skills">
             <h2>我的技能与爱好</h2>
             <div class="grid-list">
+                <div class="grid-item">建筑图纸绘画</div>
+                <div class="grid-item">施工图设计</div>
                 <div class="grid-item">美食烹饪</div>
-                <div class="grid-item">绘画</div>
+                <div class="grid-item">艺术绘画</div>
                 <div class="grid-item">种花养花</div>
                 <div class="grid-item">探店种草</div>
-                <div class="grid-item">游戏与休闲</div>
-                <div class="grid-item">摄影与生活记录</div>
+                <div class="grid-item">游戏休闲</div>
+                <div class="grid-item">摄影记录</div>
             </div>
         </div>
 
-        <!-- 联系方式 -->
         <div class="card" id="contact">
             <h2>联系方式</h2>
-            <p>如果你有技术交流或合作的想法，欢迎通过以下方式联系我：</p>
-            <p style="margin-top: 15px;">📧 邮箱：@qq.com</p>
+            <p>如果你有图纸合作、技术交流或生活分享的想法，都欢迎来找我聊天～</p>
+            <p style="margin-top:16px; font-size:16px;">📧 邮箱：596997099@qq.com</p>
         </div>
     </div>
 
-    <!-- 页脚 -->
     <footer>
-        <p>© 2026 YY老大的个人主页 | 用心记录每一步成长</p>
+        <p>© 2025 YY老大的个人主页 | 用心生活，认真工作</p>
     </footer>
 </body>
 </html>
