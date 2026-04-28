@@ -16,8 +16,10 @@
             background-color: #f8f9fa;
             color: #333;
             line-height: 1.7;
+            scroll-behavior: smooth;
         }
 
+        /* 导航动态效果 */
         nav {
             background-color: #2c3e50;
             color: white;
@@ -26,7 +28,13 @@
             top: 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 99;
+            transition: 0.4s;
         }
+        nav.scrolled {
+            background-color: #1f2d3a;
+            padding: 12px 0;
+        }
+
         .nav-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -38,6 +46,7 @@
         .nav-logo {
             font-size: 20px;
             font-weight: bold;
+            animation: fadeIn 1.2s ease;
         }
         .nav-links a {
             color: white;
@@ -47,15 +56,19 @@
         }
         .nav-links a:hover {
             color: #4fc3f7;
+            transform: scale(1.08);
         }
 
+        /* 头部动画 */
         header {
             background: linear-gradient(135deg, #3b5998, #4fc3f7);
             color: white;
             padding: 90px 20px;
             text-align: center;
+            animation: headerFade 1.5s ease;
         }
-        /* 新增头像样式 */
+
+        /* 头像旋转 + 呼吸动效 */
         .avatar {
             width: 150px;
             height: 150px;
@@ -64,16 +77,20 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             margin-bottom: 20px;
             object-fit: cover;
+            animation: rotateBreath 6s infinite ease-in-out;
         }
+
         .hero-title {
             font-size: 40px;
             margin-bottom: 18px;
+            animation: slideUp 1s ease;
         }
         .hero-subtitle {
             font-size: 19px;
             max-width: 650px;
             margin: 0 auto;
             opacity: 0.95;
+            animation: slideUp 1.2s ease;
         }
 
         .container {
@@ -82,17 +99,26 @@
             padding: 0 20px;
         }
 
+        /* 卡片滑入动画 */
         .card {
             background: white;
             padding: 40px;
             border-radius: 16px;
             box-shadow: 0 6px 24px rgba(0,0,0,0.05);
             margin-bottom: 35px;
-            transition: 0.3s;
+            transition: 0.4s;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: cardSlide 1s ease forwards;
         }
         .card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
         }
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+
         .card h2 {
             color: #2c3e50;
             margin-bottom: 22px;
@@ -109,6 +135,7 @@
             border-radius: 4px;
         }
 
+        /* 技能标签动态 */
         .grid-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -126,6 +153,7 @@
         .grid-item:hover {
             background: #e0f7fa;
             color: #0288d1;
+            transform: scale(1.08);
         }
 
         footer {
@@ -134,6 +162,29 @@
             text-align: center;
             padding: 35px 20px;
             margin-top: 60px;
+            animation: fadeIn 2s ease;
+        }
+
+        /* 动画合集 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes headerFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes cardSlide {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes rotateBreath {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.05); }
+            100% { transform: rotate(360deg) scale(1); }
         }
 
         @media (max-width: 768px) {
@@ -146,7 +197,7 @@
 </head>
 
 <body>
-    <nav>
+    <nav id="navbar">
         <div class="nav-container">
             <div class="nav-logo">YY老大的主页</div>
             <div class="nav-links">
@@ -158,8 +209,7 @@
     </nav>
 
     <header>
-        <!-- 头像位置，引用你上传的图片 -->
-        <img src="avatar.jpg" alt="YY老大的头像" class="avatar">
+        <img src="avatar.jpg" alt="YY老大" class="avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
         <h1 class="hero-title">你好，我是YY老大 👋</h1>
         <p class="hero-subtitle">专注于土木建筑图纸绘画，用心做好每一张施工图，在这里分享我的工作与生活</p>
     </header>
@@ -193,7 +243,19 @@
     </div>
 
     <footer>
-        <p>© 2025 YY老大的个人主页 | 用心生活，认真工作</p>
+        <p>© 2026 YY老大的个人主页 | 用心生活，认真工作</p>
     </footer>
+
+    <script>
+        // 导航栏滚动动态效果
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
